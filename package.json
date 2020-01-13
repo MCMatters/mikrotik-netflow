@@ -1,0 +1,8 @@
+{
+  "name": "mikrotik-netflow",
+  "private": true,
+  "dependencies": {
+    "mongodb": "^3.4.1",
+    "node-netflowv9": "^0.2.16"
+  }
+}

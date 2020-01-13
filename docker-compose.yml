@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+    container_name: mikrotik_netflow_app
+    ports:
+      - 8787:8787/udp
+    links:
+      - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+      WAIT_HOST_CONNECT_TIMEOUT: 60
+
+  mongo:
+    image: mongo:4.2.2-bionic
+    container_name: mikrotik_netflow_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    volumes:
+      - $PWD/docker/mongo:/data/db:cached
